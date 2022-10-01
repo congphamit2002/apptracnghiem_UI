@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="array_province">
+        <item>Hà Nội</item>
+        <item>Đà Nẵng</item>
+        <item>Quảng Nam</item>
+        <item>TP.HCM</item>
+    </string-array>
+</resources>
