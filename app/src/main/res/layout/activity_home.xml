@@ -180,6 +180,7 @@
 
                     <ImageView
                         android:id="@+id/iconVatLy"
+                        android:src="@drawable/vat_ly"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="10dp"
