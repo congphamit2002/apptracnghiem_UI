@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListExamActivity"
+    android:background="@drawable/bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/rectange">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Bài tập trắc nghiệm 15 phút Xét tính đơn điệu của hàm ẩn."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:drawableLeft="@drawable/ic_baseline_face_18"
+                        android:drawablePadding="5dp"
+                        android:text="QuocTaiz"
+                        android:gravity="center_vertical"/>
+
+                </TableRow>
+
+                <TableRow >
+
+                    <GridLayout
+                        android:columnCount="2"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="13 câu"
+                            android:textSize="13dp"
+                            android:textColor="@color/green"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:text="15 phút"
+                            android:textSize="13dp"
+                            android:textColor="@color/red"
+                            android:textStyle="bold"/>
+
+                    </GridLayout>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <GridLayout
+                        android:columnCount="3"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_share_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Chia sẻ"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_star_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Lưu"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Làm bài"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                    </GridLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/rectange">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Bài tập trắc nghiệm 15 phút Xét tính đơn điệu của hàm ẩn."
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12dp"
+                        android:drawableLeft="@drawable/ic_baseline_face_18"
+                        android:drawablePadding="5dp"
+                        android:text="QuocTaiz"
+                        android:gravity="center_vertical"/>
+
+                </TableRow>
+
+                <TableRow >
+
+                    <GridLayout
+                        android:columnCount="2"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="13 câu"
+                            android:textSize="13dp"
+                            android:textColor="@color/green"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"/>
+
+                        <TextView
+                            android:text="15 phút"
+                            android:textSize="13dp"
+                            android:textColor="@color/red"
+                            android:textStyle="bold"/>
+
+                    </GridLayout>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <GridLayout
+                        android:columnCount="3"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_share_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Chia sẻ"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_star_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Lưu"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="40dp"
+                            android:text="Làm bài"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            />
+
+                    </GridLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

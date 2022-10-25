@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".HomeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:textSize="20sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:text="Hello"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/nameAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="QuocTaiz"
+                android:textColor="@color/teal_700"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="-90dp"
+                android:src="@drawable/learning" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="Các môn thi đang mở"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow>
+
+                    <!--Item mon hoc-->
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelToan"
+                            android:layout_gravity="center"
+                            android:text="Toán"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconToan"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/toan"
+                            android:clickable="true"
+                            android:focusable="true"/>
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelVatLy"
+                            android:layout_gravity="center"
+                            android:text="Vật lý"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconVatLy"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/vat_ly" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelHoaHoc"
+                            android:layout_gravity="center"
+                            android:text="Hoá học"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconHoaHoc"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/hoa_hoc" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelSinhHoc"
+                            android:layout_gravity="center"
+                            android:text="Sinh học"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconSinhHoc"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/sinh_hoc" />
+
+                    </GridLayout>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelTiengAnh"
+                            android:layout_gravity="center"
+                            android:text="Tiếng Anh"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconTiengAnh"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/tieng_anh" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelDiaLy"
+                            android:layout_gravity="center"
+                            android:text="Địa lý"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconDiaLy"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/dia_ly" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelLichSu"
+                            android:layout_gravity="center"
+                            android:text="Lịch sử"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconLichSu"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/lich_su" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelTinHoc"
+                            android:layout_gravity="center"
+                            android:text="Tin học"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconTinHoc"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/tin_hoc" />
+
+                    </GridLayout>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelNguVan"
+                            android:layout_gravity="center"
+                            android:text="Ngữ văn"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconNguVan"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/ngu_van" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelGDCD"
+                            android:layout_gravity="center"
+                            android:text="GDCD"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconGDCD"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/gdcd" />
+
+                    </GridLayout>
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="1"
+                        android:rowCount="2">
+
+                        <TextView
+                            android:id="@+id/labelCongNghe"
+                            android:layout_gravity="center"
+                            android:text="Công nghệ"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/iconCongNghe"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="20dp"
+                            android:src="@drawable/cong_nghe" />
+
+                    </GridLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
