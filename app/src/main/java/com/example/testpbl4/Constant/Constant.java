@@ -1,5 +1,5 @@
 package com.example.testpbl4.Constant;
 
 public class Constant {
-    public static final String BASE_URL = "http://192.168.43.20:8080";
+    public static final String BASE_URL = "http://192.168.43.40:8080";
 }
