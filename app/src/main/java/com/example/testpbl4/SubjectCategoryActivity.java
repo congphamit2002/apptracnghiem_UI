@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.testpbl4.Adapter.QuestionGroupAdapter;
@@ -45,6 +47,21 @@ public class SubjectCategoryActivity extends AppCompatActivity {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SubjectCategoryActivity.this, LinearLayoutManager.VERTICAL, false);
                     rlcQGr.setLayoutManager(linearLayoutManager);
                     questionGRAdapter = new QuestionGroupAdapter( listQGr, SubjectCategoryActivity.this);
+
+                    questionGRAdapter.setOnItemClickListener(new QuestionGroupAdapter.ClickListener() {
+                        @Override
+                        public void onItemClick(int position, View v) {
+                            int questionGrID = listQGr.get(position).getId();
+                            Intent intent = new Intent(SubjectCategoryActivity.this, ListExamActivity.class);
+                            intent.putExtra("questionGrID", questionGrID);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onItemLongClick(int position, View v) {
+
+                        }
+                    });
                     rlcQGr.setAdapter(questionGRAdapter);
                 }
             }

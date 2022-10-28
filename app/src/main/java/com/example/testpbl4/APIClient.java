@@ -2,6 +2,7 @@ package com.example.testpbl4;
 
 import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Service.ProvinceService;
+import com.example.testpbl4.Service.QuestionGrDetailService;
 import com.example.testpbl4.Service.QuestionGroupService;
 import com.example.testpbl4.Service.SubjectService;
 import com.example.testpbl4.Service.UserService;
@@ -50,6 +51,11 @@ public class APIClient {
     public static QuestionGroupService getQRService() {
         QuestionGroupService questionGroupService = getRetrofi().create(QuestionGroupService.class);
         return questionGroupService;
+    }
+
+    public static QuestionGrDetailService getQRDService() {
+        QuestionGrDetailService questionGroupDetailService = getRetrofi().create(QuestionGrDetailService.class);
+        return questionGroupDetailService;
     }
 }
 
