@@ -1,7 +1,6 @@
 package com.example.testpbl4;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,9 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.testpbl4.Adapter.QuestionGroupAdapter;
-import com.example.testpbl4.Adapter.SubjectAdapter;
 import com.example.testpbl4.Payload.QuestionGroupRespone;
-import com.example.testpbl4.Payload.SubjectRespone;
 
 import java.util.ArrayList;
 
@@ -52,7 +49,7 @@ public class SubjectCategoryActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(int position, View v) {
                             int questionGrID = listQGr.get(position).getId();
-                            Intent intent = new Intent(SubjectCategoryActivity.this, ListExamActivity.class);
+                            Intent intent = new Intent(SubjectCategoryActivity.this, QuestionGrDetailActivity.class);
                             intent.putExtra("questionGrID", questionGrID);
                             startActivity(intent);
                         }

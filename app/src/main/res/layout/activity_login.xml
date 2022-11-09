@@ -28,7 +28,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLogin"
         android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="10dp"
-        android:hint="Username"/>
+        android:hint="Username"
+        android:text="abc"/>
+
 
     <EditText
         android:id="@+id/txtPassword"
@@ -42,7 +44,8 @@
         android:drawableLeft="@drawable/ic_baseline_key_24"
         android:drawablePadding="10dp"
         android:hint="Password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:text="abc123"/>
 
 
     <TextView
