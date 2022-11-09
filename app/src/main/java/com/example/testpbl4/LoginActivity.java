@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.testpbl4.Payload.LoginRequest;
 import com.example.testpbl4.Payload.LoginRespone;
+import com.example.testpbl4.Payload.ShareData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,9 +25,13 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         GUI();
+
+
 
         txtUsername = findViewById(R.id.txtUsername);
         txtPassword = findViewById(R.id.txtPassword);
@@ -81,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginRespone> call, Response<LoginRespone> response) {
                 if(response.isSuccessful()) {
                      userLogin = response.body();
+                    ShareData.userLogin = userLogin;
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else  {
                     String message = "Đăng nhập thất bại, vui lòng thử lại";

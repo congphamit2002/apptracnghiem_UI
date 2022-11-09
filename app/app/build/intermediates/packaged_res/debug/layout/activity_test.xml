@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".HomeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/nameAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="QuocTaiz"
+                android:textSize="30sp"
+                android:textColor="@color/teal_700"/>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/learning"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="-90dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Các môn thi đang mở"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/labelToan"
+                        android:gravity="center"
+                        android:text="Toán"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/labelTiengAnh"
+                        android:gravity="center"
+                        android:text="Tiếng Anh"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/labelLichSu"
+                        android:gravity="center"
+                        android:text="Lịch sử"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/labelDiaLy"
+                        android:gravity="center"
+                        android:text="Địa lý"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:id="@+id/iconToan"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/toan"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Toan"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconTiengAnh"
+                        android:src="@drawable/tieng_anh"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Tienganh"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconLichSu"
+                        android:src="@drawable/lich_su"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Lichsu"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconDiaLy"
+                        android:src="@drawable/dia_ly"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Dialy"
+                        android:clickable="true"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/labelHoaHoc"
+                        android:gravity="center"
+                        android:text="Hoá học"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/labelVatLy"
+                        android:gravity="center"
+                        android:text="Vật lý"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/labelTinHoc"
+                        android:gravity="center"
+                        android:text="Tin học"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/labelGDCD"
+                        android:gravity="center"
+                        android:text="GDCD"
+                        android:textSize="17sp"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:id="@+id/iconHoaHoc"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/hoa_hoc"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Hoahoc"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconVatLy"
+                        android:src="@drawable/vat_ly"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Vatly"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconTinHoc"
+                        android:src="@drawable/tin_hoc"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Tinhoc"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconGDCD"
+                        android:src="@drawable/gdcd"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="GDCD"
+                        android:clickable="true"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/labelSinhHoc"
+                        android:gravity="center"
+                        android:text="Sinh học"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/labelCongNghe"
+                        android:gravity="center"
+                        android:text="Công nghệ"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/labelNguVan"
+                        android:gravity="center"
+                        android:text="Ngữ văn"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageView
+                        android:id="@+id/iconSinhHoc"
+                        android:src="@drawable/sinh_hoc"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Sinhhoc"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconCongNghe"
+                        android:src="@drawable/cong_nghe"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Congnghe"
+                        android:clickable="true"/>
+
+                    <ImageView
+                        android:id="@+id/iconNguVan"
+                        android:src="@drawable/ngu_van"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:contentDescription="Nguvan"
+                        android:clickable="true"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,10 @@ package com.example.testpbl4;
 
 import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Service.ProvinceService;
+import com.example.testpbl4.Service.QuestionGrDetailService;
+import com.example.testpbl4.Service.QuestionGroupService;
+import com.example.testpbl4.Service.QuestionService;
+import com.example.testpbl4.Service.SubjectService;
 import com.example.testpbl4.Service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,6 +43,25 @@ public class APIClient {
     public static ProvinceService getProvinceService() {
         ProvinceService provinceService = getRetrofi().create(ProvinceService.class);
         return provinceService;
+    }
+
+    public static SubjectService getSubjectService() {
+        SubjectService subjectService = getRetrofi().create(SubjectService.class);
+        return subjectService;
+    }
+    public static QuestionGroupService getQRService() {
+        QuestionGroupService questionGroupService = getRetrofi().create(QuestionGroupService.class);
+        return questionGroupService;
+    }
+
+    public static QuestionGrDetailService getQRDService() {
+        QuestionGrDetailService questionGroupDetailService = getRetrofi().create(QuestionGrDetailService.class);
+        return questionGroupDetailService;
+    }
+
+    public static QuestionService getQuetionService() {
+        QuestionService questionService = getRetrofi().create(QuestionService.class);
+        return  questionService;
     }
 }
 
