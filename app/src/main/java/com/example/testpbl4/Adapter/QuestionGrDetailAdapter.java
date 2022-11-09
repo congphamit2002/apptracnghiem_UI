@@ -10,34 +10,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testpbl4.Payload.QuestionGrDetailRespone;
-import com.example.testpbl4.Payload.QuestionGroupRespone;
 import com.example.testpbl4.Payload.ShareData;
 import com.example.testpbl4.R;
 
 import java.util.ArrayList;
 
-public class ListExamAdapter extends RecyclerView.Adapter<ListExamAdapter.ViewHolder>{
+public class QuestionGrDetailAdapter extends RecyclerView.Adapter<QuestionGrDetailAdapter.ViewHolder>{
 
     private ArrayList<QuestionGrDetailRespone> listQGrsDetail;
     private Context context;
-    private static ListExamAdapter.ClickListener clickListener;
+    private static QuestionGrDetailAdapter.ClickListener clickListener;
 
-    public ListExamAdapter(ArrayList<QuestionGrDetailRespone> listQGrsDetail, Context context) {
+    public QuestionGrDetailAdapter(ArrayList<QuestionGrDetailRespone> listQGrsDetail, Context context) {
         this.listQGrsDetail = listQGrsDetail;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ListExamAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public QuestionGrDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.exam_item,parent, false);
+                .inflate(R.layout.question_gr_detail_item,parent, false);
 
-        return new ListExamAdapter.ViewHolder(view);
+        return new QuestionGrDetailAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListExamAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuestionGrDetailAdapter.ViewHolder holder, int position) {
         holder.txtHeaderName.setText("" + listQGrsDetail.get(position).getName_gr_detail());
         holder.txtDescription.setText(listQGrsDetail.get(position).getDescription());
         holder.txtUsrename.setText(ShareData.userLogin.getUsername());
@@ -76,8 +75,8 @@ public class ListExamAdapter extends RecyclerView.Adapter<ListExamAdapter.ViewHo
         }
     }
 
-    public void setOnItemClickListener(ListExamAdapter.ClickListener clickListener) {
-        ListExamAdapter.clickListener = clickListener;
+    public void setOnItemClickListener(QuestionGrDetailAdapter.ClickListener clickListener) {
+        QuestionGrDetailAdapter.clickListener = clickListener;
     }
 
     public interface ClickListener {

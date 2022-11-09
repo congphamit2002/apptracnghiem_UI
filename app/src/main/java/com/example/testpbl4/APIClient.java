@@ -4,6 +4,7 @@ import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Service.ProvinceService;
 import com.example.testpbl4.Service.QuestionGrDetailService;
 import com.example.testpbl4.Service.QuestionGroupService;
+import com.example.testpbl4.Service.QuestionService;
 import com.example.testpbl4.Service.SubjectService;
 import com.example.testpbl4.Service.UserService;
 import com.google.gson.Gson;
@@ -56,6 +57,11 @@ public class APIClient {
     public static QuestionGrDetailService getQRDService() {
         QuestionGrDetailService questionGroupDetailService = getRetrofi().create(QuestionGrDetailService.class);
         return questionGroupDetailService;
+    }
+
+    public static QuestionService getQuetionService() {
+        QuestionService questionService = getRetrofi().create(QuestionService.class);
+        return  questionService;
     }
 }
 
