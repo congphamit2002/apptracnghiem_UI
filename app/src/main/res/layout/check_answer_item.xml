@@ -15,5 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/red"
         android:text="A" />
 </LinearLayout>

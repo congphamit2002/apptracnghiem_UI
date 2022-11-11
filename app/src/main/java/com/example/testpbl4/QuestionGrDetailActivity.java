@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.testpbl4.Adapter.QuestionGrDetailAdapter;
+import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Payload.QuestionGrDetailRespone;
 import com.example.testpbl4.model.Question;
 
@@ -85,6 +86,7 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
                     Log.e("\t\tList size  " , "" +listQuestion.size());
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("listQuestion",(Serializable) listQuestion);
+                    bundle.putInt(Constant.ARG_QUESTION_GR_DETAIL_ID, questionGrDetailId);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

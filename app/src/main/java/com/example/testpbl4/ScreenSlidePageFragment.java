@@ -3,8 +3,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +20,13 @@ import com.example.testpbl4.R;
 import com.example.testpbl4.model.Question;
 
 import java.util.ArrayList;
+import java.util.logging.ConsoleHandler;
 
 public class ScreenSlidePageFragment extends Fragment {
 
     private ArrayList<Question> listQuestion;
     private int currentPage; //vi tri trang hien tai
+    private int checkState;
 
     TextView txtNum, txtQuestion;
     RadioGroup radGroup;
@@ -54,6 +58,8 @@ public class ScreenSlidePageFragment extends Fragment {
         ScreenSlidePagerActivity screenSlidePagerActivity = (ScreenSlidePagerActivity) getActivity();
         listQuestion = screenSlidePagerActivity.getQuestionByGrDetailId();
         currentPage = getArguments().getInt(Constant.ARG_PAGE);
+        checkState = getArguments().getInt(Constant.ARG_CHECK);
+
     }
 
     @Override
@@ -62,17 +68,68 @@ public class ScreenSlidePageFragment extends Fragment {
         Log.e("Current page ", ""+ currentPage);
         Log.e("Question ", listQuestion.get(currentPage).getQuestion());
         txtNum.setText("Câu " + (currentPage + 1));
-        txtQuestion.setText(listQuestion.get(currentPage).getQuestion());
-        radA.setText(listQuestion.get(currentPage).getOption1());
-        radB.setText(listQuestion.get(currentPage).getOption2());
-        radC.setText(listQuestion.get(currentPage).getOption3());
-        radD.setText(listQuestion.get(currentPage).getOption4());
+        txtQuestion.setText(getItem(currentPage).getQuestion());
+        radA.setText(getItem(currentPage).getOption1());
+        radB.setText(getItem(currentPage).getOption2());
+        radC.setText(getItem(currentPage).getOption3());
+        radD.setText(getItem(currentPage).getOption4());
+
+        if(checkState != 0 ) {
+            Log.e("\t\tCorrect Answer ", ""+ getItem(currentPage).getCorrectAnswer().toString());
+            getResultAnswer(getItem(currentPage).getCorrectAnswer().toString());
+        }
+
+        radGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Log.e("\t\tcurrenPage ", getItem(currentPage).getCorrectAnswer());
+                getItem(currentPage).setCheckedID(checkedId);
+                getItem(currentPage).setAnswer(getAnswerChoiceByID(checkedId));
+
+            }
+        });
+
     }
 
-    public static ScreenSlidePageFragment create(int pageNum) {
+    //Đưa ra câu trả lời đúng và kh cho chọn đáp án
+    private void getResultAnswer(String answer ) {
+        radA.setClickable(false);
+        radB.setClickable(false);
+        radC.setClickable(false);
+        radD.setClickable(false);
+        if(answer.equals("A")) {
+            radA.setBackgroundColor(Color.RED);
+        } else if(answer.equals("B")) {
+            radB.setBackgroundColor(Color.RED);
+        }else if(answer.equals("C")) {
+            radC.setBackgroundColor(Color.RED);
+        }else if(answer.equals("D")) {
+            radD.setBackgroundColor(Color.RED);
+        }
+    }
+
+    private String getAnswerChoiceByID(int id ) {
+        if(id == R.id.radA) {
+            return  "A";
+        }else if (id == R.id.radB) {
+            return "B";
+        }else if (id == R.id.radC) {
+            return "C";
+        } else if (id == R.id.radD) {
+            return "D";
+        }
+        return "";
+    }
+
+    public Question getItem(int position) {
+        return listQuestion.get(position);
+    }
+
+    public static ScreenSlidePageFragment create(int pageNum, int checkState) {
         ScreenSlidePageFragment fragment = new ScreenSlidePageFragment();
         Bundle args = new Bundle();
         args.putInt(Constant.ARG_PAGE,pageNum);
+        args.putInt(Constant.ARG_CHECK, checkState);
         fragment.setArguments(args);
         return fragment;
     }
