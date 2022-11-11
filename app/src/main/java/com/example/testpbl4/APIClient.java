@@ -1,6 +1,7 @@
 package com.example.testpbl4;
 
 import com.example.testpbl4.Constant.Constant;
+import com.example.testpbl4.Service.HistoryTestService;
 import com.example.testpbl4.Service.ProvinceService;
 import com.example.testpbl4.Service.QuestionGrDetailService;
 import com.example.testpbl4.Service.QuestionGroupService;
@@ -62,6 +63,10 @@ public class APIClient {
     public static QuestionService getQuetionService() {
         QuestionService questionService = getRetrofi().create(QuestionService.class);
         return  questionService;
+    }
+    public static HistoryTestService getHistoryTestService() {
+        HistoryTestService historyTestService = getRetrofi().create(HistoryTestService.class);
+        return  historyTestService;
     }
 }
 

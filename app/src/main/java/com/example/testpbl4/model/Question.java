@@ -10,8 +10,17 @@ public class Question implements Serializable {
     private String option2;
     private String option3;
     private String option4;
-    private String correctAnswer;
-    private String answer;
+    private String correct_answer;
+    private String answer ="";
+    private int checkedID = -1;
+
+    public int getCheckedID() {
+        return checkedID;
+    }
+
+    public void setCheckedID(int checkedID) {
+        this.checkedID = checkedID;
+    }
 
     public String getAnswer() {
         return answer;
@@ -78,10 +87,10 @@ public class Question implements Serializable {
     }
 
     public String getCorrectAnswer() {
-        return correctAnswer;
+        return correct_answer;
     }
 
     public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
+        this.correct_answer = correctAnswer;
     }
 }
