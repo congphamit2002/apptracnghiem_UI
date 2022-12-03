@@ -1,6 +1,7 @@
 package com.example.testpbl4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
     RadioButton rbtnMale, rbtnFemale;
     Spinner spinnerProvince;
     Button btnRegister;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         rbtnFemale = findViewById(R.id.rbtnFemale);
         btnRegister = findViewById(R.id.btnRegister);
         spinnerProvince = findViewById(R.id.spinnerProvince);
+        toolbar = findViewById(R.id.toolBar);
 
         renderProvince();
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
         });
+        actionToolbar();
     }
 
     public void renderProvince() {
@@ -116,5 +121,11 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void actionToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 }

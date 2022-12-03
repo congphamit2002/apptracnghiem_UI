@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionGrDetailActivity"
-    android:background="@drawable/bg"
+    tools:context=".HistoryTestActivity"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -16,16 +15,9 @@
         android:layout_marginBottom="10dp"
         />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlcListHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rlcListExam"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

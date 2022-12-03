@@ -1,6 +1,7 @@
 package com.example.testpbl4.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,12 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtName.setText(listSubject.get(position).getSubjectName());
         String src = listSubject.get(position).getImage();
+//        int drawableId = context.getResources().getIdentifier(src, "drawable", context.getPackageName());
         int drawableId = context.getResources().getIdentifier(src, "drawable", context.getPackageName());
+//        holder.icon.setImageResource(drawableId);
         holder.icon.setImageResource(drawableId);
     }
+
 
     @Override
     public int getItemCount() {

@@ -1,6 +1,7 @@
 package com.example.testpbl4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import retrofit2.Response;
 public class SubjectCategoryActivity extends AppCompatActivity {
 
     private RecyclerView rlcQGr;
+    private Toolbar toolbar;
     ArrayList<QuestionGroupRespone> listQGr;
     QuestionGroupAdapter questionGRAdapter;
     @Override
@@ -29,9 +31,12 @@ public class SubjectCategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_subject_category);
 
         rlcQGr = findViewById(R.id.rlcQGrs);
+        toolbar = findViewById(R.id.toolBar);
 
         int subjectID = getIntent().getExtras().getInt("subjectID");
         getQRByID(subjectID);
+
+        actionToolbar();
     }
 
     public void getQRByID(int subjectID) {
@@ -68,5 +73,11 @@ public class SubjectCategoryActivity extends AppCompatActivity {
                 Toast.makeText(SubjectCategoryActivity.this, "ERROR", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void actionToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 }

@@ -21,86 +21,115 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtCorrectAns"
-            android:layout_width="wrap_content"
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Số câu đúng" />
+            android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/txtNumCorr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2" />
+            <TableRow
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/txtCorrectAns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:text="Số câu đúng" />
+
+                <TextView
+                    android:id="@+id/txtNumCorr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:layout_marginLeft="20dp"
+                    android:text="2" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/txtIncorrectAns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:text="Số câu sai: " />
+
+                <TextView
+                    android:id="@+id/txtNumIncorr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:layout_marginLeft="20dp"
+                    android:text="2" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/txtNoCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số câu không trả lời: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtNumNoCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    android:text="2" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/txtScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Tổng điểm: " />
+
+                <TextView
+                    android:id="@+id/txtNumScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:text="2" />
+
+            </TableRow>
+
+        </TableLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtIncorrectAns"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Số câu sai: " />
-
-        <TextView
-            android:id="@+id/txtNumIncorr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtNoCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Số câu không trả lời: " />
-
-        <TextView
-            android:id="@+id/txtNumNoCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tổng điểm: " />
-
-        <TextView
-            android:id="@+id/txtNumScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
 
