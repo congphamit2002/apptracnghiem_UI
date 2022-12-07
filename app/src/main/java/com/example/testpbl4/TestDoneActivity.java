@@ -120,7 +120,7 @@ public class TestDoneActivity extends AppCompatActivity {
         numScore = Double.parseDouble(String.format("%.1f", numScore).replace(",","."));
         Log.e("\t\tNumscore ", ""+ numScore);
         historyTestRequest.setScore(numScore );
-        Call<String> saveHistoryTestCall = APIClient.getHistoryTestService().saveHistoryTest(historyTestRequest);
+        Call<String> saveHistoryTestCall = APIClient.getHistoryTestService().saveHistoryTest(historyTestRequest, "Bearer " +ShareData.userLogin.getToken());
         saveHistoryTestCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.testpbl4.Adapter.QuestionGroupAdapter;
 import com.example.testpbl4.Payload.QuestionGroupRespone;
+import com.example.testpbl4.Payload.ShareData;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,9 @@ public class SubjectCategoryActivity extends AppCompatActivity {
     }
 
     public void getQRByID(int subjectID) {
-        Call<ArrayList<QuestionGroupRespone>> getSubjectResponeCall = APIClient.getQRService().getQGBySubjectId(subjectID);
+        Log.e("\t\tToken: ", ShareData.userLogin.getToken());
+
+        Call<ArrayList<QuestionGroupRespone>> getSubjectResponeCall = APIClient.getQRService().getQGBySubjectId(subjectID, "Bearer " + ShareData.userLogin.getToken());
         getSubjectResponeCall.enqueue(new Callback<ArrayList<QuestionGroupRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<QuestionGroupRespone>> call, Response<ArrayList<QuestionGroupRespone>> response) {

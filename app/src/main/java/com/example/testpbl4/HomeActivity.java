@@ -67,7 +67,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getAllSubject() {
-        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject();
+        Log.e("\t\tToken: ", ShareData.userLogin.getToken());
+        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject("Bearer " +ShareData.userLogin.getToken());
         getSubjectCall.enqueue(new Callback<ArrayList<SubjectRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<SubjectRespone>> call, Response<ArrayList<SubjectRespone>> response) {

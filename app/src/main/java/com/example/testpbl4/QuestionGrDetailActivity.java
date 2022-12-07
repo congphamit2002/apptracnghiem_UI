@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.testpbl4.Adapter.QuestionGrDetailAdapter;
 import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Payload.QuestionGrDetailRespone;
+import com.example.testpbl4.Payload.ShareData;
 import com.example.testpbl4.model.Question;
 
 import java.io.Serializable;
@@ -46,7 +47,8 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
     }
 
     public void getQRDByID(int questionGrID) {
-        Call<ArrayList<QuestionGrDetailRespone>> getQGrDetaialResponeCall = APIClient.getQRDService().getQGrDetailByQGrId(questionGrID);
+        Call<ArrayList<QuestionGrDetailRespone>> getQGrDetaialResponeCall =
+                    APIClient.getQRDService().getQGrDetailByQGrId(questionGrID, "Bearer " +ShareData.userLogin.getToken());
         getQGrDetaialResponeCall.enqueue(new Callback<ArrayList<QuestionGrDetailRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<QuestionGrDetailRespone>> call, Response<ArrayList<QuestionGrDetailRespone>> response) {
@@ -81,7 +83,7 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
 
     public void getQuestionByGrDetailId(int questionGrDetailId) {
 
-        Call<ArrayList<Question>> getQuesitonCall = APIClient.getQuetionService().getQuestionsByGrDetailId(questionGrDetailId);
+        Call<ArrayList<Question>> getQuesitonCall = APIClient.getQuetionService().getQuestionsByGrDetailId(questionGrDetailId, "Bearer " + ShareData.userLogin.getToken());
         getQuesitonCall.enqueue(new Callback<ArrayList<Question>>() {
             @Override
             public void onResponse(Call<ArrayList<Question>> call, Response<ArrayList<Question>> response) {
