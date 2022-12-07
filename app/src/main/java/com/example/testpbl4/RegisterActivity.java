@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void renderProvince() {
-        Call<List<Provinces>> provincesCall = APIClient.getProvinceService().getAllProvinces("Bearer " + ShareData.userLogin.getToken());
+        Call<List<Provinces>> provincesCall = APIClient.getProvinceService().getAllProvinces();
         provincesCall.enqueue(new Callback<List<Provinces>>() {
             @Override
             public void onResponse(Call<List<Provinces>> call, Response<List<Provinces>> response) {

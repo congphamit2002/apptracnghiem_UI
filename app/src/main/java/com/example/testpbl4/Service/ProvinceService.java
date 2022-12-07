@@ -10,5 +10,5 @@ import retrofit2.http.Header;
 
 public interface ProvinceService {
     @GET("/api/province/getAllProvince")
-    Call<List<Provinces>> getAllProvinces(@Header("Authorization") String token);
+    Call<List<Provinces>> getAllProvinces();
 }
