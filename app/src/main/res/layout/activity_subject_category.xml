@@ -5,8 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".SubjectCategoryActivity">
+    tools:context=".SubjectCategoryActivity"
+    android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/teal_700"
+        android:layout_marginBottom="10dp"
+        />
 
         <LinearLayout
             android:layout_width="match_parent"

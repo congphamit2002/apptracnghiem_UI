@@ -5,19 +5,20 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class ForgotPasswordActivity extends AppCompatActivity {
+public class HistoryTestActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
-        actionToolbar();
+        setContentView(R.layout.activity_history_test);
+
+        toolbar = findViewById(R.id.toolBar);
+        actionToolBar();
     }
 
-    private void actionToolbar(){
+    private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(view -> onBackPressed());

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">testPBL4</string>
+    <string name="nameAccount">Name Account</string>
+    <string name="emailAccount">emailAccount@gmail.com</string>
 </resources>

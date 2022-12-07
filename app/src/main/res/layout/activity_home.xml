@@ -5,69 +5,141 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical">
 
-    <ScrollView
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:fitsSystemWindows="true">
 
         <LinearLayout
-            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical"
-            android:textSize="20sp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
-                android:text="Hello"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+            <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/teal_700"/>
 
-            <TextView
-                android:id="@+id/nameAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="QuocTaiz"
-                android:textColor="@color/teal_700"
-                android:textSize="30sp" />
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="-90dp"
-                android:src="@drawable/learning" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
-                android:text="Các môn thi đang mở"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textSize="22sp" />
-
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rlcSubject"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical"
+                    android:textSize="20sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="50dp"
+                        android:text="Xin chào"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/nameAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:text="QuocTaiz"
+                        android:textColor="@color/teal_700"
+                        android:textSize="30sp" />
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="200dp"
+                        android:layout_marginTop="-90dp"
+                        android:src="@drawable/learning" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Các môn thi đang mở"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="22sp" />
+
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rlcSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+
+            </ScrollView>
+
         </LinearLayout>
 
-    </ScrollView>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@color/blue_light">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@mipmap/ic_account_img"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nameAccount"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/emailAccount"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"/>
+
+        </com.google.android.material.navigation.NavigationView>
+
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

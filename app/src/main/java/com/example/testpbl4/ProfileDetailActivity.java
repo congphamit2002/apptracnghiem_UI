@@ -5,15 +5,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class ForgotPasswordActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
+public class ProfileDetailActivity extends AppCompatActivity {
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
+        setContentView(R.layout.activity_profile_detail);
+
+        toolbar = findViewById(R.id.toolBar);
+
         actionToolbar();
     }
 

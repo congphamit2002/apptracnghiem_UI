@@ -1,6 +1,7 @@
 package com.example.testpbl4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,14 +32,18 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
     private QuestionGrDetailAdapter lisQuestionGrDetailAdapter;
     private ArrayList<Question> listQuestion = new ArrayList<>();
     private TextView txtKiemTra;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_gr_detail);
 
         rlcListExam = findViewById(R.id.rlcListExam);
+        toolbar = findViewById(R.id.toolBar);
+
         int questionGrID = getIntent().getExtras().getInt("questionGrID");
         getQRDByID(questionGrID);
+        actionToolbar();
     }
 
     public void getQRDByID(int questionGrID) {
@@ -100,5 +105,11 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
             }
         });
 
+    }
+
+    private void actionToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 }

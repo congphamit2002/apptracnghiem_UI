@@ -1,6 +1,7 @@
 package com.example.testpbl4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     EditText txtOldPassword, txtNewPassword,txtCFNewPassword;
     Button btnChangePW;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         txtNewPassword = findViewById(R.id.txtNewPassword);
         txtCFNewPassword = findViewById(R.id.txtCFNewPassword);
         btnChangePW = findViewById(R.id.btnChangePW);
+        toolbar = findViewById(R.id.toolBar);
 
         btnChangePW.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +53,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
 
         });
+
+        actionToolBar();
     }
 
     public void changePassword(ChangePasswordRequest changePasswordRequest) {
@@ -72,5 +78,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 Toast.makeText(ChangePasswordActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void actionToolBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 }
