@@ -7,8 +7,9 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 
 public interface SubjectService {
     @GET("/api/subject/getAllSubject")
-    Call<ArrayList<SubjectRespone>> getAllSubject();
+    Call<ArrayList<SubjectRespone>> getAllSubject(@Header("Authorization") String token);
 }

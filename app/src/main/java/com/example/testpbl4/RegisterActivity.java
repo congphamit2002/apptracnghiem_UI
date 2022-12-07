@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.testpbl4.Payload.ChangePasswordRequest;
 import com.example.testpbl4.Payload.Provinces;
 import com.example.testpbl4.Payload.RegisterRequest;
+import com.example.testpbl4.Payload.ShareData;
 
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void renderProvince() {
-        Call<List<Provinces>> provincesCall = APIClient.getProvinceService().getAllProvinces();
+        Call<List<Provinces>> provincesCall = APIClient.getProvinceService().getAllProvinces("Bearer " + ShareData.userLogin.getToken());
         provincesCall.enqueue(new Callback<List<Provinces>>() {
             @Override
             public void onResponse(Call<List<Provinces>> call, Response<List<Provinces>> response) {
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerUser(RegisterRequest registerRequest) {
-        Call<String> insertUserCall = APIClient.getUserService().insertUser(registerRequest);
+        Call<String> insertUserCall = APIClient.getUserService().insertUser(registerRequest, "Bearer " +ShareData.userLogin.getToken());
         insertUserCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

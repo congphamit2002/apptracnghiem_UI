@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.testpbl4.Payload.ChangePasswordRequest;
+import com.example.testpbl4.Payload.ShareData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +52,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     public void changePassword(ChangePasswordRequest changePasswordRequest) {
-        Call<String> changePasswordCall = APIClient.getUserService().changePassword(changePasswordRequest);
+        Call<String> changePasswordCall = APIClient.getUserService().changePassword(changePasswordRequest, "Bearer " + ShareData.userLogin.getToken());
         changePasswordCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

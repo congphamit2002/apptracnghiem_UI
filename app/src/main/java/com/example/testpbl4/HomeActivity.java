@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
@@ -49,7 +50,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getAllSubject() {
-        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject();
+        Log.e("\t\tToken: ", ShareData.userLogin.getToken());
+        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject("Bearer " +ShareData.userLogin.getToken());
         getSubjectCall.enqueue(new Callback<ArrayList<SubjectRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<SubjectRespone>> call, Response<ArrayList<SubjectRespone>> response) {
