@@ -45,7 +45,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     Toast.makeText(ChangePasswordActivity.this, "Mật khẩu xác nhận không chính xác!!", Toast.LENGTH_LONG).show();
                 } else {
                     ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest();
-                    changePasswordRequest.setId(1);
+                    changePasswordRequest.setId(ShareData.userLogin.getId());
                     changePasswordRequest.setNewPassword(txtNewPassword.getText().toString());
                     changePasswordRequest.setOldPassword(txtOldPassword.getText().toString());
                     changePassword(changePasswordRequest);

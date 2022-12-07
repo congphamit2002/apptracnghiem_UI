@@ -17,51 +17,85 @@
         <TableRow>
 
             <TextView
-                android:id="@+id/txtHeaderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Tên đề thi"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/txtHeaderName"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Đề thi 1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow >
 
             <GridLayout
+                android:layout_margin="5dp"
                 android:columnCount="4"
-                android:layout_margin="5dp">
+                android:layout_width="match_parent">
 
                 <TextView
                     android:text="Số câu đúng:"
-                    android:textSize="13dp"
                     android:textColor="@color/green"
-                    android:textStyle="bold"/>
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtCorrectAns"
                     android:text="15"
-                    android:textSize="13dp"
                     android:textColor="@color/green"
-                    android:textStyle="bold"/>
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:text="Số câu sai:"
+                    android:textColor="@color/green"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtIncorrectAns"
+                    android:text="15"
+                    android:textColor="@color/green"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:text="Điểm:"
-                    android:textSize="13dp"
                     android:textColor="@color/red"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="15dp"/>
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtScore"
                     android:text="10"
-                    android:textSize="13dp"
                     android:textColor="@color/red"
-                    android:textStyle="bold"/>
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
             </GridLayout>
+            <TextView
+                android:id="@+id/txtDeleteTest"
+                android:layout_marginRight="40dp"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_baseline_delete_24"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="Xoá"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
 
         </TableRow>
 
@@ -70,30 +104,6 @@
             <GridLayout
                 android:columnCount="2"
                 android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtRepeatTest"
-                    android:drawableLeft="@drawable/ic_baseline_replay_24"
-                    android:drawablePadding="5dp"
-                    android:layout_marginRight="40dp"
-                    android:text="Làm lại"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:clickable="true"
-                    />
-
-                <TextView
-                    android:id="@+id/txtDeleteTest"
-                    android:drawableLeft="@drawable/ic_baseline_delete_24"
-                    android:drawablePadding="5dp"
-                    android:layout_marginRight="40dp"
-                    android:text="Xoá"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:clickable="true"
-                    />
 
             </GridLayout>
 

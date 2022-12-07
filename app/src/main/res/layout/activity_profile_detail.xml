@@ -93,11 +93,13 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/rbdMale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nam"/>
 
                         <RadioButton
+                            android:id="@+id/rbdFeMale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nữ"

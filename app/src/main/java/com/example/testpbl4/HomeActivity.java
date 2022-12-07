@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
     RecyclerView rlcSubject;
     ArrayList<SubjectRespone> listSubjects = new ArrayList<>();
-    TextView nameAccount;
+    TextView nameAccount, idAccounNav, idEmailNav;
     SubjectAdapter subjectAdapter;
 
     Toolbar toolbar;
@@ -54,7 +54,11 @@ public class HomeActivity extends AppCompatActivity {
 
         rlcSubject = findViewById(R.id.rlcSubject);
         nameAccount = findViewById(R.id.nameAccount);
+        idAccounNav = findViewById(R.id.idAccounNav);
+        idEmailNav = findViewById(R.id.idEmailNav);
         nameAccount.setText(ShareData.userLogin.getUsername());
+        idAccounNav.setText(ShareData.userLogin.getUsername());
+        idEmailNav.setText(ShareData.userLogin.getEmail());
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);

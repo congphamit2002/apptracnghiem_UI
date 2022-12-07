@@ -112,6 +112,7 @@
                     android:layout_marginLeft="30dp"/>
 
                 <TextView
+                    android:id="@+id/idAccounNav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nameAccount"
@@ -121,6 +122,7 @@
                     android:layout_marginLeft="30dp"/>
 
                 <TextView
+                    android:id="@+id/idEmailNav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/emailAccount"
