@@ -3,7 +3,9 @@ package com.example.testpbl4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +33,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         GUI();
 
+        SharedPreferences preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        String token = preferences.getString("token", "");
+        Log.e("\t\tTOKEN LOGIN ", token);
+        if(!token.equals("")) {
+            userLogin = new LoginRespone();
+            userLogin.setToken(token);
+            userLogin.setId(Integer.parseInt(preferences.getString("id", "")));
+            userLogin.setUsername(preferences.getString("username", ""));
+            userLogin.setEmail(preferences.getString("email", ""));
+            ShareData.userLogin = userLogin;
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        }
 
 
         txtUsername = findViewById(R.id.txtUsername);
@@ -44,11 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                 || txtUsername.getText().toString().equals("")) {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập đủ tài khoản, mật khẩu", Toast.LENGTH_LONG).show();
                 } else {
-                    LoginRequest loginRequest = new LoginRequest();
-                    loginRequest.setUsername(txtUsername.getText().toString());
-                    loginRequest.setPassword(txtPassword.getText().toString());
-
-                    loginHandle(loginRequest);
+                        LoginRequest loginRequest = new LoginRequest();
+                        loginRequest.setUsername(txtUsername.getText().toString());
+                        loginRequest.setPassword(txtPassword.getText().toString());
+                        loginHandle(loginRequest);
                 }
             }
         });
@@ -85,8 +98,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginRespone> call, Response<LoginRespone> response) {
                 if(response.isSuccessful()) {
-                     userLogin = response.body();
+                    userLogin = new LoginRespone();
+                    userLogin = response.body();
                     ShareData.userLogin = userLogin;
+                    SharedPreferences preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+                    preferences.edit().putString("token", userLogin.getToken()).commit();
+                    preferences.edit().putString("id", ""+userLogin.getId()).commit();
+                    preferences.edit().putString("username", userLogin.getUsername()).commit();
+                    preferences.edit().putString("email", userLogin.getEmail()).commit();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else  {
                     String message = "Đăng nhập thất bại, vui lòng thử lại";

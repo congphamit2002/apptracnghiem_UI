@@ -55,6 +55,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     private int checkState = 0, questionGrDetailId;
     private  CounterClass counterClass;
     TextView txtKiemTra, txtTime, txtViewScore;
+    private int time, currentPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +71,10 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         txtKiemTra = findViewById(R.id.txtKiemTra);
         txtViewScore = findViewById(R.id.txtViewScore);
         txtTime = findViewById(R.id.txtTime);
-         counterClass = new CounterClass(60*1000, 1000);
+
+        time = b.getInt("time");
+        Log.e("\t\tTIME: " , "" + time);
+         counterClass = new CounterClass(time*60*1000, 1000);
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -143,6 +148,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         public Fragment getItem(int position) {
 
             Log.e("Current page activity " , ""+ position);
+            currentPage = position;
             return ScreenSlidePageFragment.create(position, checkState);
         }
 
@@ -212,6 +218,11 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                 getResult();
                 counterClass.cancel();
                 txtKiemTra.setVisibility(View.GONE);
+                if(currentPage >= 4) {
+                    mPager.setCurrentItem(0);
+                }else {
+                    mPager.setCurrentItem(currentPage + 3);
+                }
                 txtViewScore.setVisibility(View.VISIBLE);
                 dialog.dismiss();
             }

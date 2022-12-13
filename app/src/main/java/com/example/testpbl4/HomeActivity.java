@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.testpbl4.Adapter.MenuNavAdapter;
 import com.example.testpbl4.Adapter.SubjectAdapter;
+import com.example.testpbl4.Constant.Constant;
 import com.example.testpbl4.Payload.ShareData;
 import com.example.testpbl4.Payload.SubjectRespone;
 import com.example.testpbl4.Service.SubjectService;
@@ -36,29 +38,41 @@ import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
-    RecyclerView rlcSubject;
-    ArrayList<SubjectRespone> listSubjects = new ArrayList<>();
-    TextView nameAccount, idAccounNav, idEmailNav;
-    SubjectAdapter subjectAdapter;
+    private RecyclerView rlcSubject;
+    private ArrayList<SubjectRespone> listSubjects = new ArrayList<>();
+    private TextView nameAccount, idAccounNav, idEmailNav;
+    private SubjectAdapter subjectAdapter;
 
-    Toolbar toolbar;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ListView listView;
+    private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ListView listView;
 
+    private SharedPreferences preferences;
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
+
         rlcSubject = findViewById(R.id.rlcSubject);
         nameAccount = findViewById(R.id.nameAccount);
         idAccounNav = findViewById(R.id.idAccounNav);
         idEmailNav = findViewById(R.id.idEmailNav);
+
         nameAccount.setText(ShareData.userLogin.getUsername());
-        idAccounNav.setText(ShareData.userLogin.getUsername());
+        idAccounNav.setText("" + ShareData.userLogin.getId());
         idEmailNav.setText(ShareData.userLogin.getEmail());
+
+
+        Log.e("\t\tUsername ", ShareData.userLogin.getUsername());
+        Log.e("\t\tId ", ""+ShareData.userLogin.getId());
+        Log.e("\t\tEmail ", ShareData.userLogin.getEmail());
+
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -71,8 +85,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getAllSubject() {
-        Log.e("\t\tToken: ", ShareData.userLogin.getToken());
-        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject("Bearer " +ShareData.userLogin.getToken());
+        Call<ArrayList<SubjectRespone>> getSubjectCall = APIClient.getSubjectService().getAllSubject("Bearer " +token);
         getSubjectCall.enqueue(new Callback<ArrayList<SubjectRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<SubjectRespone>> call, Response<ArrayList<SubjectRespone>> response) {
@@ -89,7 +102,6 @@ public class HomeActivity extends AppCompatActivity {
                             sendActivity.putExtra("subjectID", listSubjects.get(position).getId());
                             startActivity(sendActivity);
                         }
-
                         @Override
                         public void onItemLongClick(int position, View v) {
                             Toast.makeText(HomeActivity.this, "on click " + listSubjects.get(position).getId(), Toast.LENGTH_LONG).show();
@@ -157,6 +169,9 @@ public class HomeActivity extends AppCompatActivity {
                     {
                         // destroy session here
                         //
+                        Constant constant = new Constant();
+                        constant.clearStorage(preferences);
+                        Log.e("\t\tTOKEN: " ,preferences.getString("tokent", ""));
 
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                         startActivity(intent);

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
     EditText txtOldPassword, txtNewPassword,txtCFNewPassword;
     Button btnChangePW;
     Toolbar toolbar;
+    private SharedPreferences preferences;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnChangePW = findViewById(R.id.btnChangePW);
         toolbar = findViewById(R.id.toolBar);
 
+        ShareData.userLogin.getToken();
+
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
+
         btnChangePW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +53,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     Toast.makeText(ChangePasswordActivity.this, "Mật khẩu xác nhận không chính xác!!", Toast.LENGTH_LONG).show();
                 } else {
                     ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest();
-                    changePasswordRequest.setId(ShareData.userLogin.getId());
+                    changePasswordRequest.setId(Integer.parseInt(preferences.getString("id","")));
                     changePasswordRequest.setNewPassword(txtNewPassword.getText().toString());
                     changePasswordRequest.setOldPassword(txtOldPassword.getText().toString());
                     changePassword(changePasswordRequest);
@@ -58,7 +66,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     public void changePassword(ChangePasswordRequest changePasswordRequest) {
-        Call<String> changePasswordCall = APIClient.getUserService().changePassword(changePasswordRequest, "Bearer " + ShareData.userLogin.getToken());
+        Call<String> changePasswordCall = APIClient.getUserService().changePassword(changePasswordRequest, "Bearer " + token);
         changePasswordCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

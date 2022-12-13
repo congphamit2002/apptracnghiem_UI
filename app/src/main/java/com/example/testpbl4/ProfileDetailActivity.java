@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -19,6 +21,8 @@ import com.example.testpbl4.Payload.AccountUpRespone;
 import com.example.testpbl4.Payload.Provinces;
 import com.example.testpbl4.Payload.ShareData;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,10 +31,14 @@ import retrofit2.Response;
 
 public class ProfileDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private EditText txtFullName, txtDate, txtEmail, txtPhone;
+    private EditText txtFullName, txtEmail, txtPhone;
     private Spinner spinnerProvince;
     private RadioButton rdbMale, rdbFemale;
     private Button btnUpdate;
+    private DatePicker datePicker;
+    private SharedPreferences preferences;
+    private String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +47,14 @@ public class ProfileDetailActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolBar);
 
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
+
         actionToolbar();
         renderProvince();
 
         txtFullName = findViewById(R.id.txtFullName);
-        txtDate = findViewById(R.id.txtDate);
+        datePicker = findViewById(R.id.datePicker);
         txtEmail = findViewById(R.id.txtEmail);
         txtPhone = findViewById(R.id.txtPhone);
         spinnerProvince = findViewById(R.id.spinnerProvince);
@@ -63,9 +74,17 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 accountUpRequest.setPhone(txtPhone.getText().toString());
                 accountUpRequest.setProvince_id(spinnerProvince.getSelectedItemPosition() + 1);
                 Log.e("Position " , "" + spinnerProvince.getSelectedItemPosition());
-                accountUpRequest.setDate_of_birth(txtDate.getText().toString());
-                accountUpRequest.setId(ShareData.userLogin.getId());
-                Call<String> updateCall = APIClient.getUserService().updateAccount(accountUpRequest, "Bearer " + ShareData.userLogin.getToken());
+                int   day  = datePicker.getDayOfMonth();
+                int   month= datePicker.getMonth();
+                int   year = datePicker.getYear();
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String formatedDate = sdf.format(calendar.getTime());
+                accountUpRequest.setDate_of_birth(formatedDate);
+                accountUpRequest.setId(Integer.parseInt(preferences.getString("id","")));
+                Call<String> updateCall = APIClient.getUserService().updateAccount(accountUpRequest, "Bearer " + token);
                 updateCall.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
@@ -116,8 +135,8 @@ public class ProfileDetailActivity extends AppCompatActivity {
     }
 
     private void renderUser(){
-        Call<AccountUpRespone> accountUpResponeCall = APIClient.getUserService().getAccountUpResp(ShareData.userLogin.getId(),
-                "Bearer " + ShareData.userLogin.getToken()
+        Call<AccountUpRespone> accountUpResponeCall = APIClient.getUserService().getAccountUpResp(Integer.parseInt(preferences.getString("id","")),
+                "Bearer " + token
         );
         accountUpResponeCall.enqueue(new Callback<AccountUpRespone>() {
             @Override
@@ -125,7 +144,15 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 AccountUpRespone accountUpRespone = response.body();
                 if(accountUpRespone != null ) {
                     txtFullName.setText(accountUpRespone.getFullname());
-                    txtDate.setText(accountUpRespone.getDate_of_birth());
+                    String dateApi = accountUpRespone.getDate_of_birth();
+                    String[] dateSplit = dateApi.split("-", 0);
+                    int year = Integer.parseInt(dateSplit[0]);
+                    int month = Integer.parseInt(dateSplit[1]);
+                    int day = Integer.parseInt(dateSplit[2]);
+                    Log.e("\t\tYEAR ", "" + year);
+                    Log.e("\t\tMONTH ", "" + month);
+                    Log.e("\t\tDAY ", "" + day);
+                    datePicker.init(year, month - 1 , day, null);
                     txtEmail.setText(accountUpRespone.getEmail());
                     txtPhone.setText(accountUpRespone.getPhone());
                     spinnerProvince.setSelection(accountUpRespone.getProvince_id() - 1);

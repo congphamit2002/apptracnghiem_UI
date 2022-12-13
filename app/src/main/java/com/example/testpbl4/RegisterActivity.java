@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -18,6 +19,8 @@ import com.example.testpbl4.Payload.Provinces;
 import com.example.testpbl4.Payload.RegisterRequest;
 import com.example.testpbl4.Payload.ShareData;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,11 +29,12 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText txtUsername, txtPassword ,txtCfPassword, txtFullName, txtEmail, txtPhone;
-    RadioButton rbtnMale, rbtnFemale;
-    Spinner spinnerProvince;
-    Button btnRegister;
-    Toolbar toolbar;
+    private EditText txtUsername, txtPassword ,txtCfPassword, txtFullName, txtEmail, txtPhone;
+    private RadioButton rbtnMale, rbtnFemale;
+    private Spinner spinnerProvince;
+    private Button btnRegister;
+    private Toolbar toolbar;
+    private DatePicker datePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         rbtnFemale = findViewById(R.id.rbtnFemale);
         btnRegister = findViewById(R.id.btnRegister);
         spinnerProvince = findViewById(R.id.spinnerProvince);
+        datePicker = findViewById(R.id.datePicker);
         toolbar = findViewById(R.id.toolBar);
 
         renderProvince();
@@ -71,6 +76,15 @@ public class RegisterActivity extends AppCompatActivity {
                     registerRequest.setEmail(txtEmail.getText().toString());
                     registerRequest.setGender(rbtnMale.isChecked() ? 1 : 0);
                     registerRequest.setProvince((Provinces) spinnerProvince.getSelectedItem());
+                    int   day  = datePicker.getDayOfMonth();
+                    int   month= datePicker.getMonth();
+                    int   year = datePicker.getYear();
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(year, month, day);
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String formatedDate = sdf.format(calendar.getTime());
+                    registerRequest.setDateOfBirth(formatedDate);
 
                     registerUser(registerRequest);
                 }
@@ -105,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registerUser(RegisterRequest registerRequest) {
-        Call<String> insertUserCall = APIClient.getUserService().insertUser(registerRequest, "Bearer " +ShareData.userLogin.getToken());
+        Call<String> insertUserCall = APIClient.getUserService().insertUser(registerRequest);
         insertUserCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

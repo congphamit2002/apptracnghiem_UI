@@ -9,7 +9,7 @@ public class RegisterRequest {
     private String fullname;
     private String phone;
     private int gender;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String email;
     private Provinces province;
 
@@ -61,11 +61,11 @@ public class RegisterRequest {
         this.gender = gender;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

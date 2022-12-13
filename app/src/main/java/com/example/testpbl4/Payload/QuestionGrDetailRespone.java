@@ -4,6 +4,8 @@ public class QuestionGrDetailRespone {
     private int id;
     private String name_gr_detail;
     private String description;
+    private int number_question;
+    private int time;
 
     public int getId() {
         return id;
@@ -27,5 +29,21 @@ public class QuestionGrDetailRespone {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getNumber_question() {
+        return number_question;
+    }
+
+    public void setNumber_question(int number_question) {
+        this.number_question = number_question;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }
