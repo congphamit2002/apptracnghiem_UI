@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,10 +28,13 @@ import retrofit2.Response;
 public class TestDoneActivity extends AppCompatActivity {
 
     private TextView txtNumCorr, txtNumIncorr, txtNumNoCheck, txtNumScore;
-    Button btnRestart, btnSaveTest, btnExit;
+    private Button btnRestart, btnSaveTest, btnExit;
     private ArrayList<Question> listQuestion;
     private int numIncorr, numCorr, numNoCheck, questionGrDetailId;
     private double numScore;
+    private SharedPreferences preferences;
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,8 @@ public class TestDoneActivity extends AppCompatActivity {
         btnRestart = findViewById(R.id.btnRestart);
         btnSaveTest = findViewById(R.id.btnSaveTest);
         btnExit = findViewById(R.id.btnExit);
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
 
         Bundle b = getIntent().getExtras();
         listQuestion = (ArrayList<Question>) b.getSerializable("listQuestion");
@@ -113,14 +119,14 @@ public class TestDoneActivity extends AppCompatActivity {
 
     public void saveHistoryTest(int id) {
         HistoryTestRequest historyTestRequest = new HistoryTestRequest();
-        historyTestRequest.setAccountId(ShareData.userLogin.getId());
+        historyTestRequest.setAccountId(Integer.parseInt(preferences.getString("id","")));
         historyTestRequest.setQgrDetailId(id);
         historyTestRequest.setCorrectAnswer(numCorr);
         historyTestRequest.setInCorrectAnswer(numIncorr);
         numScore = Double.parseDouble(String.format("%.1f", numScore).replace(",","."));
         Log.e("\t\tNumscore ", ""+ numScore);
         historyTestRequest.setScore(numScore );
-        Call<String> saveHistoryTestCall = APIClient.getHistoryTestService().saveHistoryTest(historyTestRequest, "Bearer " +ShareData.userLogin.getToken());
+        Call<String> saveHistoryTestCall = APIClient.getHistoryTestService().saveHistoryTest(historyTestRequest, "Bearer " +token);
         saveHistoryTestCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

@@ -20,7 +20,7 @@ public interface UserService {
     Call<String> changePassword(@Body ChangePasswordRequest changePasswordRequest, @Header("Authorization") String token);
 
     @POST("/api/account/insertAccount")
-    Call<String> insertUser(@Body RegisterRequest registerRequest, @Header("Authorization") String token);
+    Call<String> insertUser(@Body RegisterRequest registerRequest);
 
     @POST("/api/v1/login")
     Call<LoginRespone> loginUser(@Body LoginRequest loginRequest);

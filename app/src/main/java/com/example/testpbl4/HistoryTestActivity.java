@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,8 @@ public class HistoryTestActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView rlcListHistory;
     private HistoryTestAdapter historyTestAdapter;
+    private SharedPreferences preferences;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,9 @@ public class HistoryTestActivity extends AppCompatActivity {
 
         rlcListHistory = findViewById(R.id.rlcListHistory);
         toolbar = findViewById(R.id.toolBar);
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
+
         actionToolBar();
         renderHistoryTest();
     }
@@ -58,8 +64,8 @@ public class HistoryTestActivity extends AppCompatActivity {
 
     private void renderHistoryTest() {
         Call<ArrayList<Map<String, String>>> getHistoryCall = APIClient.getHistoryTestService()
-                .getHistoryTestByUserID(ShareData.userLogin.getId(),
-                        "Bearer " + ShareData.userLogin.getToken());
+                .getHistoryTestByUserID(Integer.parseInt(preferences.getString("id","")),
+                        "Bearer " + token);
         getHistoryCall.enqueue(new Callback<ArrayList<Map<String, String>>>() {
             @Override
             public void onResponse(Call<ArrayList<Map<String, String>>> call, Response<ArrayList<Map<String, String>>> response) {
@@ -79,7 +85,6 @@ public class HistoryTestActivity extends AppCompatActivity {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(HistoryTestActivity.this, LinearLayoutManager.VERTICAL, false);
                     rlcListHistory.setLayoutManager(linearLayoutManager);
                     historyTestAdapter = new HistoryTestAdapter(listHistory, HistoryTestActivity.this);
-                    Log.e("\t\tJson data ", "" + listHistory.get(0).getName_gr_detail());
                     historyTestAdapter.setOnItemClickListener(new HistoryTestAdapter.ClickListener() {
                         @Override
                         public void onItemClick(int position, View v) {
@@ -91,7 +96,7 @@ public class HistoryTestActivity extends AppCompatActivity {
                                     // continue with delete
                                     Call<String> deleteHistoryCall = APIClient.getHistoryTestService()
                                             .deleteHistoryTest(listHistory.get(position).getId(),
-                                                    "Bearer " + ShareData.userLogin.getToken());
+                                                    "Bearer " + token);
                                     deleteHistoryCall.enqueue(new Callback<String>() {
                                         @Override
                                         public void onResponse(Call<String> call, Response<String> response) {

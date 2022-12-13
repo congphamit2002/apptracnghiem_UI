@@ -1,6 +1,7 @@
 package com.example.testpbl4.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class QuestionGrDetailAdapter extends RecyclerView.Adapter<QuestionGrDeta
     private ArrayList<QuestionGrDetailRespone> listQGrsDetail;
     private Context context;
     private static QuestionGrDetailAdapter.ClickListener clickListener;
+    private SharedPreferences preferences;
 
     public QuestionGrDetailAdapter(ArrayList<QuestionGrDetailRespone> listQGrsDetail, Context context) {
         this.listQGrsDetail = listQGrsDetail;
@@ -37,9 +39,12 @@ public class QuestionGrDetailAdapter extends RecyclerView.Adapter<QuestionGrDeta
 
     @Override
     public void onBindViewHolder(@NonNull QuestionGrDetailAdapter.ViewHolder holder, int position) {
-        holder.txtHeaderName.setText("" + listQGrsDetail.get(position).getName_gr_detail());
-        holder.txtDescription.setText(listQGrsDetail.get(position).getDescription());
-        holder.txtUsrename.setText(ShareData.userLogin.getUsername());
+        preferences = context.getSharedPreferences("accountLogin", Context.MODE_PRIVATE);
+        holder.txtHeaderName.setText("Đề thi: " + listQGrsDetail.get(position).getName_gr_detail());
+        holder.txtTime.setText("Thời gian: " + listQGrsDetail.get(position).getTime() + " phút");
+        holder.txtDescription.setText("Mô tả: " + listQGrsDetail.get(position).getDescription());
+        holder.txtNumberQues.setText("Số câu hỏi: " + listQGrsDetail.get(position).getNumber_question());
+
 
     }
 
@@ -50,7 +55,7 @@ public class QuestionGrDetailAdapter extends RecyclerView.Adapter<QuestionGrDeta
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
-        public TextView txtHeaderName, txtDescription, txtUsrename;
+        public TextView txtHeaderName, txtDescription, txtTime,txtNumberQues;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -58,7 +63,8 @@ public class QuestionGrDetailAdapter extends RecyclerView.Adapter<QuestionGrDeta
 
             txtHeaderName = itemView.findViewById(R.id.txtHeaderName);
             txtDescription = itemView.findViewById(R.id.txtDescription);
-            txtUsrename = itemView.findViewById(R.id.txtUsername);
+            txtTime = itemView.findViewById(R.id.txtTime);
+            txtNumberQues = itemView.findViewById(R.id.txtNumberQues);
 
 
         }

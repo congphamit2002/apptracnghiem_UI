@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,10 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
     private ArrayList<Question> listQuestion = new ArrayList<>();
     private TextView txtKiemTra;
     private Toolbar toolbar;
+    private SharedPreferences preferences;
+    private String token;
+    private Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,10 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
         rlcListExam = findViewById(R.id.rlcListExam);
         toolbar = findViewById(R.id.toolBar);
 
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
+         bundle = new Bundle();
+
         int questionGrID = getIntent().getExtras().getInt("questionGrID");
         getQRDByID(questionGrID);
         actionToolbar();
@@ -48,7 +57,7 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
 
     public void getQRDByID(int questionGrID) {
         Call<ArrayList<QuestionGrDetailRespone>> getQGrDetaialResponeCall =
-                    APIClient.getQRDService().getQGrDetailByQGrId(questionGrID, "Bearer " +ShareData.userLogin.getToken());
+                    APIClient.getQRDService().getQGrDetailByQGrId(questionGrID, "Bearer " +token);
         getQGrDetaialResponeCall.enqueue(new Callback<ArrayList<QuestionGrDetailRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<QuestionGrDetailRespone>> call, Response<ArrayList<QuestionGrDetailRespone>> response) {
@@ -62,6 +71,8 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
                         @Override
                         public void onItemClick(int position, View v) {
                             getQuestionByGrDetailId(listQGrDetail.get(position).getId());
+                            bundle.putInt("time", listQGrDetail.get(position).getTime() );
+
                         }
 
                         @Override
@@ -83,7 +94,7 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
 
     public void getQuestionByGrDetailId(int questionGrDetailId) {
 
-        Call<ArrayList<Question>> getQuesitonCall = APIClient.getQuetionService().getQuestionsByGrDetailId(questionGrDetailId, "Bearer " + ShareData.userLogin.getToken());
+        Call<ArrayList<Question>> getQuesitonCall = APIClient.getQuetionService().getQuestionsByGrDetailId(questionGrDetailId, "Bearer " + token);
         getQuesitonCall.enqueue(new Callback<ArrayList<Question>>() {
             @Override
             public void onResponse(Call<ArrayList<Question>> call, Response<ArrayList<Question>> response) {
@@ -91,7 +102,6 @@ public class QuestionGrDetailActivity extends AppCompatActivity  {
                     Intent intent = new Intent(QuestionGrDetailActivity.this, ScreenSlidePagerActivity.class);
                     listQuestion = response.body();
                     Log.e("\t\tList size  " , "" +listQuestion.size());
-                    Bundle bundle = new Bundle();
                     bundle.putSerializable("listQuestion",(Serializable) listQuestion);
                     bundle.putInt(Constant.ARG_QUESTION_GR_DETAIL_ID, questionGrDetailId);
                     intent.putExtras(bundle);

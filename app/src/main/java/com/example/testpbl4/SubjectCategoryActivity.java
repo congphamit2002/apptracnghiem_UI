@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,8 +26,11 @@ public class SubjectCategoryActivity extends AppCompatActivity {
 
     private RecyclerView rlcQGr;
     private Toolbar toolbar;
-    ArrayList<QuestionGroupRespone> listQGr;
-    QuestionGroupAdapter questionGRAdapter;
+    private ArrayList<QuestionGroupRespone> listQGr;
+    private QuestionGroupAdapter questionGRAdapter;
+    private SharedPreferences preferences;
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,8 @@ public class SubjectCategoryActivity extends AppCompatActivity {
 
         rlcQGr = findViewById(R.id.rlcQGrs);
         toolbar = findViewById(R.id.toolBar);
+        preferences = getSharedPreferences("accountLogin", MODE_PRIVATE);
+        token = ShareData.userLogin.getToken();
 
         int subjectID = getIntent().getExtras().getInt("subjectID");
         getQRByID(subjectID);
@@ -42,9 +48,9 @@ public class SubjectCategoryActivity extends AppCompatActivity {
     }
 
     public void getQRByID(int subjectID) {
-        Log.e("\t\tToken: ", ShareData.userLogin.getToken());
+        Log.e("\t\tToken: ", token);
 
-        Call<ArrayList<QuestionGroupRespone>> getSubjectResponeCall = APIClient.getQRService().getQGBySubjectId(subjectID, "Bearer " + ShareData.userLogin.getToken());
+        Call<ArrayList<QuestionGroupRespone>> getSubjectResponeCall = APIClient.getQRService().getQGBySubjectId(subjectID, "Bearer " + token);
         getSubjectResponeCall.enqueue(new Callback<ArrayList<QuestionGroupRespone>>() {
             @Override
             public void onResponse(Call<ArrayList<QuestionGroupRespone>> call, Response<ArrayList<QuestionGroupRespone>> response) {
